@@ -25,15 +25,15 @@
 		<div class="ui list-inset lista">
 			
 			<div ng-repeat="item in datos" >
-				<div class="ui segment item-card" ng-if="item.CALCULA_RECAUDO_FUENTES">
+				<div class="ui segment item-card">
 				   <div class="ui small four  statistics" >
 				    
 				    <div class="statistic" >
 				      <div class="value">
-				        <i class="dollar icon"></i> {{item.CALCULA_RECAUDO_FUENTES | currency:"":0}}
+				        <i class="dollar icon"></i> {{item.recaudo_total | currency:"":0}}
 				      </div>
 				      <div class="label">
-				        Ocaña norte de Santander
+				        {{item.organismo}}
 				      </div>
 				    </div>
 				   </div>

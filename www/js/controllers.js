@@ -54,7 +54,7 @@ controller("homeCtrl",["$scope","$filter","$location","appService","ionicDatePic
     	var suma=0;
     	var datos=$scope.datos;
     	for(var i =0;i<datos.length;++i){
-    		suma+=datos[i]["CALCULA_RECAUDO_FUENTES"];
+    		suma+=datos[i]["recaudo_total"];
     	}
     	$scope.total=suma;
     }
