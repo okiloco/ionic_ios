@@ -1,1 +1,70 @@
 /* Empty. Add your own CSS if you like */
+@import 'https://fonts.googleapis.com/css?family=Roboto';
+
+.contenido,.lista{
+   background-color: #272B43;
+   color:#fff!important;
+   margin: 60px 0px 0px 0px!important;
+}
+
+.bar-dark{
+	border-color: #272b43!important;
+	background-color: #272b43!important;
+	background-image: linear-gradient(0deg, #111, #111 50%, transparent 50%);
+	
+}
+.bar-dark div{
+	color: #fff!important;
+}
+.ui.segment {
+    position: relative;
+    background: #272b43!important;
+    box-shadow: 0 1px 2px 0 rgba(34,36,38,.15);
+    margin: 2rem 0!important;
+    padding: 2em;
+    border-radius: .28571429rem;
+    border: 1px solid rgba(34,36,38,.15);
+}
+.icono{
+    border-radius: 500em!important;
+    line-height: 1!important;
+    padding: .5em!important;
+    box-shadow: 0 0 0 0.1em rgba(214, 215, 222, 0.47) inset!important;
+    width: 2em!important;
+    height: 2em!important;
+}
+.label{
+	color: #fff!important;
+}
+.cabecera{
+	border-color: #363b58!important;
+	background-color: #363b58!important;
+	background-image: linear-gradient(0deg, #363b58, #363b58 50%, transparent 50%);
+}
+.today_text{
+	padding: 5px;
+    color: rgba(248, 248, 248, 0.5);
+    font-size: 14px;
+    line-height: 0;
+}
+.item-card{
+	border-top: 2px solid rgba(248, 248, 248, 0.14)!important;
+}
+.item-card .statistic .value{
+ color: #fff!important;
+ font-size: 3rem!important;
+}
+.btn-filter, .btn-filter .activated{
+    background-color: #272b43!important;
+    border-color: #272b43!important;
+}
+.ui.segment{
+ margin: 0rem 0!important;
+}
+
+.statistic {
+    min-width: 25%;
+    margin: 0 auto!important;
+    margin-bottom: 20px!important;
+    margin-top: 5px!important;
+}

@@ -1,0 +1,45 @@
+
+<ion-view view-titlw="Home">
+	
+	 <ion-header-bar class="bar-dark">
+        <div class="item-button-right ">
+         
+           <h1 class="title">
+            <i class="pie chart icon"></i> Recaudo Diario
+          </h1>
+          <button class="button button-positive btn-filter" ng-click="openDatePicker()">
+           <i class="filter icon"></i>
+          </button>
+        </div>
+      </ion-header-bar>
+      <div class="bar bar-subheader bar-dark cabecera" style="height:130px;">
+          <div class="ui center aligned icon header">
+            <i class="circular money icon icono"></i>
+            Total: <span>{{total | currency:"$":0}}</span>
+          <p class="today_text">{{ currentDate | date:'dd - MMMM - yyyy' }}</p>
+          </div>
+      </div>	
+	<ion-content class="inverted segment contenido" >
+		 
+
+		<div class="ui list-inset lista">
+			
+			<div ng-repeat="item in datos" >
+				<div class="ui segment item-card" ng-if="item.CALCULA_RECAUDO_FUENTES">
+				   <div class="ui small four  statistics" >
+				    
+				    <div class="statistic" >
+				      <div class="value">
+				        <i class="dollar icon"></i> {{item.CALCULA_RECAUDO_FUENTES | currency:"":0}}
+				      </div>
+				      <div class="label">
+				        Ocaña norte de Santander
+				      </div>
+				    </div>
+				   </div>
+			    </div>
+		    </div>
+	    </div>
+	</ion-content>
+
+</ion-view>
