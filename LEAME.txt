@@ -1,0 +1,6 @@
+Este proeycto, desarrollado para Construseñales.
+
+Lista el recaudo diario de los Organismos de transito.
+
+Compilado para plataformas ios,Android.
+
