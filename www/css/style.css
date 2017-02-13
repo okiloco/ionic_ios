@@ -4,9 +4,11 @@
 .contenido,.lista{
    background-color: #272B43;
    color:#fff!important;
-   margin: 60px 0px 0px 0px!important;
+   margin: 130px 0px 0px 0px!important;
 }
-
+.ionic-refresher-content{
+   color: rgba(255, 255, 255, 0.65)!important;
+}
 .bar-dark{
 	border-color: #272b43!important;
 	background-color: #272b43!important;

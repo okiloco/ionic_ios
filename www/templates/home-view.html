@@ -12,25 +12,28 @@
           </button>
         </div>
       </ion-header-bar>
-      <div class="bar bar-subheader bar-dark cabecera" style="height:130px;">
-          <div class="ui center aligned icon header">
-            <i class="circular money icon icono"></i>
-            Total: <span>{{total | currency:"$":0}}</span>
-          <p class="today_text">{{ currentDate | date:'dd - MMMM - yyyy' }}</p>
-          </div>
-      </div>	
+  
+    <div class="bar bar-subheader bar-dark cabecera" style="height:130px;">
+       <div class="ui center aligned icon header">
+         <i class="circular money icon icono"></i>
+         Total: <span>{{total | currency:"$":0}}</span>
+       <p class="today_text">{{ currentDate | date:'dd - MMMM - yyyy' }}</p>
+       </div>
+    </div> 
+	      	
 	<ion-content class="inverted segment contenido" >
-		 
-
-		<div class="ui list-inset lista">
-			
+		<ion-refresher
+		    pulling-text="Tire para refrescar..."
+		    on-refresh="doRefresh()">
+		</ion-refresher>
+		<ion-list class="ui list-inset lista">
 			<div ng-repeat="item in datos" >
 				<div class="ui segment item-card">
 				   <div class="ui small four  statistics" >
 				    
 				    <div class="statistic" >
 				      <div class="value">
-				        <i class="dollar icon"></i> {{item.recaudo_total | currency:"":0}}
+				        <i class="dollar icon"></i> {{(item.recaudo_total)?item.recaudo_total:0 | currency:"":0}}
 				      </div>
 				      <div class="label">
 				        {{item.organismo}}
@@ -39,7 +42,6 @@
 				   </div>
 			    </div>
 		    </div>
-	    </div>
+	    </ion-list>
 	</ion-content>
-
 </ion-view>

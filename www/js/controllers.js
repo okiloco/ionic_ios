@@ -1,8 +1,8 @@
 angular.module('app.controllers',[]).
-controller("homeCtrl",["$scope","$filter","$location","appService","ionicDatePicker", "$ionicPopup", "$timeout", function($scope,$filter, $location,appService,ionicDatePicker, $ionicPopup, $timeout ){
+controller("homeCtrl",["$scope","$filter","$location","appService","ionicDatePicker", "$ionicPopup", "$timeout",'$ionicLoading', function($scope,$filter, $location,appService,ionicDatePicker, $ionicPopup, $timeout,$ionicLoading ){
 	
 
-	$scope.currentDate = $scope.currentDate = $filter('date')(new Date(),"yyyy-MM-dd");
+	$scope.currentDate = $filter('date')(new Date(),"yyyy-MM-dd");
 	$scope.datos=[];
 	$scope.total=0;
 
@@ -28,13 +28,28 @@ controller("homeCtrl",["$scope","$filter","$location","appService","ionicDatePic
         disableWeekdays: [0, 6],
         showTodayButton: false,
         closeOnSelect: false,
-        templateType: 'popup'
+        templateType: 'popup',
+
       };
       ionicDatePicker.openDatePicker(ipObj1);
     }
+    $scope.show = function() {
+       $ionicLoading.show({
+         template: 'Cargando...',
+         duration: 30000
+       }).then(function(){
+          console.log("The loading indicator is now displayed");
+       });
+     };
+    $scope.hide = function(){
+     $ionicLoading.hide().then(function(){
+        console.log("Datos cargados con éxito!");
+        //$ionicLoading.show({ template: 'Datos cargados con éxito!', noBackdrop: true, duration: 1000 });
+     });
+    };
+    cargarDatos =function(){
 
-     cargarDatos =function(){
-
+      $scope.show();
     	appService.Consultar($scope.currentDate)
     	.then(function successCallback(response) {
  			var result=response.data;
@@ -44,10 +59,16 @@ controller("homeCtrl",["$scope","$filter","$location","appService","ionicDatePic
 		    }else{
 		    	$scope.showModal({title:'Error!',msg:response.statusText+':'+response.status});
 		    }
-		}, function errorCallback(response) {
-			$scope.showModal({title:'Error!',msg:response.statusText+':'+response.status+''+response.config.url});
-			console.log(response);
-		});
+  		}, function errorCallback(response) {
+  			$scope.showModal({title:'Error!',msg:response.statusText+':'+response.status+''+response.config.url});
+  			console.log(response);
+  		})
+      .finally(function() {
+       // Stop the ion-refresher from spinning
+       $scope.$broadcast('scroll.refreshComplete');
+       $scope.hide();
+       //$ionicLoading.show({ template: 'Datos cargados con éxito!', noBackdrop: true, duration: 2000 });
+     });
     }
 
     getTotal=function(){
@@ -66,11 +87,18 @@ controller("homeCtrl",["$scope","$filter","$location","appService","ionicDatePic
 	     template: config.msg
 	    });
 
+    
+    
+
 	  myPopup.then(function(res) {
 	    console.log('Tapped!', res);
 	  });
 
     }
     cargarDatos();
+
+    $scope.doRefresh=function(){
+      cargarDatos();
+    }
 
 }]);
